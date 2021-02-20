@@ -1,33 +1,213 @@
-.image-header {
-  padding-top: 15px;
+/* react-bootstrap */
+@media (min-width: 1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 960px !important;
+  }
 }
-.icon-header {
-  padding-top: 5px;
-  padding-left: 18px;
+.col,
+.col-1,
+.col-10,
+.col-11,
+.col-12,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-auto,
+.col-lg,
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-auto,
+.col-md,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-auto,
+.col-sm,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-auto,
+.col-xl,
+.col-xl-1,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-auto {
+  position: relative;
+  width: 100%;
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
 }
+/* template */
+.container {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  background-color: white;
+}
+/* app.js */
+.container-fluid .header {
+  background-color: white;
+  margin-bottom: 20px;
+  border: solid lightgray 1px;
+}
+.container-fluid .footer {
+  margin-top: 20px;
+  text-align: center;
+}
+.navbar.navbar-expand.navbar-light .icon-header {
+  width: 50px;
+  height: 50px;
+}
+.navbar.navbar-expand.navbar-light.navbar-icons {
+  float: right;
+}
+.container-fluid .footer p {
+  font-size: 15px;
+}
+.footer.row .container .row .col-sm-12 {
+  background-color: #fafafa;
+}
+/* settings.js */
+.body.row {
+  background-color: white;
+}
+.side-right.col-sm-3 {
+  /* border: black solid 1px !important; */
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 25%;
+  border-right: solid lightgray 1px;
+}
+.nav-pills .nav-link {
+  border-radius: 0px !important;
+  color: black;
+}
+.nav-item .nav-link:hover {
+  background-color: #eeecec !important;
+  color: black !important;
+  border-left: gray solid 1px;
+}
+.nav-pills .nav-link.active {
+  background-color: #eeecec !important;
+  border-left: gray solid 1px;
+  color: black !important;
+}
+.container.settings {
+  background-color: white;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+  border: solid lightgray 1px;
+}
+/* home.js */
 .card {
-  margin-bottom: 40px;
-  margin-top: 40px;
-}
-.card-setting {
-  min-height: 1500px;
-}
-
-.custom-header {
-  background-color: #fff;
-  border-bottom: solid 1px #ced4da;
+  margin: 20px;
 }
 .card-header {
-  background-color: #fff;
+  background-color: white !important;
 }
-
-.column-setting {
-  border: solid 1px #ced4da;
-  padding: 10px;
+.card-footer {
+  background-color: white !important;
+  padding: 0px !important;
 }
-
-li {
-  color: black;
-  padding-top: 10px;
-  padding-bottom: 10px;
+.card-title img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: solid gray 1px;
+}
+.card-header .card-title.h5 {
+  font-size: 20px;
+  font-weight: bold;
+}
+.card-body .card-text {
+  font-size: 20px;
+}
+.card-footer .form-control {
+  min-height: 50px;
+  font-size: 20px;
+}
+.card-body img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.card-body .bookmark {
+  width: 40px;
+  height: 40px;
+  float: right;
+}
+.my-profile.card {
+  border: solid white 0px;
+}
+.my-profile.card .card-header {
+  border-bottom: solid white 0px;
+}
+.col-sm-4 p {
+  margin-left: 50px;
+  font-weight: bold;
+  color: gray;
+}
+.people-may-you-know.card {
+  border: solid white 0px;
+}
+.people-may-you-know.card .card-header {
+  border-bottom: solid white 0px;
+}
+.people-may-you-know.card .card-header img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  border: solid gray 1px;
+}
+.people-may-you-know.card .card-header .card-title.h5 {
+  font-weight: lighter;
+  font-size: 12px;
+  color: gray;
 }

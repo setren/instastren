@@ -20,18 +20,18 @@ class App extends Component {
     return (
       <Router>
         <Container fluid>
-          <Row className="custom-header">
+          <Row className="header">
             <Container>
               <Row>
                 <Col sm={4}>
                   <Navbar>
-                    <Link to="/"><img className="image-header" src="logo.png" alt="𝕴𝖓𝖘𝖙𝖆𝖘𝖙𝖗𝖊𝖓"></img></Link>
+                    <Link to="/"><img className="image-header" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png%202x" alt="𝕴𝖓𝖘𝖙𝖆𝖘𝖙𝖗𝖊𝖓"></img></Link>
                   </Navbar>
                 </Col>
                 <Col sm={4}>
                 </Col>
-                <Col sm={4}>
-                  <Navbar >
+                <Col sm={4} >
+                  <Navbar className="navbar-icons">
                     <Link to="/"><img className="icon-header" src="home.png" ></img></Link>
                     <Link to="/message"><img className="icon-header" src="paper-plane.png" ></img></Link>
                     <Link to="/activity"><img className="icon-header" src="love.png" ></img></Link>
@@ -42,7 +42,7 @@ class App extends Component {
               </Row>
             </Container>
           </Row>
-        </Container>
+        </Container >
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/message" component={Message} />
@@ -50,6 +50,30 @@ class App extends Component {
           <Route path="/arround" component={Arround} />
           <Route path="/settings" component={Settings} />
         </Switch >
+        <Container fluid>
+          <Row className="footer">
+            <Container>
+              <Row>
+                <Col sm={12}>
+                  <p>
+                    Tentang
+                    Blog
+                    Pekerjaan
+                    Bantuan
+                    API
+                    Privasi
+                    Ketentuan
+                    Akun Teratas
+                    Tagar
+                    Lokasi
+                    Bahasa Indonesia
+                    © 2021 Instastren from Setren.inc
+                  </p>
+                </Col>
+              </Row>
+            </Container>
+          </Row>
+        </Container >
       </Router >
     )
   }

@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Col, Container, FormControl, Row, Tab, Form, Button, Tabs } from 'react-bootstrap';
+import { Col, Container, FormControl, Row, Tab, Form, Button, Tabs, Nav, TabContainer } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,48 +7,117 @@ import {
   Link,
   useRouteMatch
 } from "react-router-dom";
+import Template from '../Templates/Template';
 
 
 function Settings() {
   console.log('settings render')
   let { url } = useRouteMatch();
   return (
-    <Router>
-      <Row>
-        <Container >
-          <Row >
-            <Col className="card">
-              <Row className="card-setting">
-                <Col className="column-setting" sm={3}>
-                  <Link to={`${url}`} ><li>Edit Profil</li></Link>
-                  <Link to={`${url}/ubah-kata-sandi`} ><li>Ubah Kata Sandi</li></Link>
-                  <Link to={`${url}/aplikasi-dan-situs-web`} ><li>Aplikasi dan Situs Web</li></Link>
-                  <Link to={`${url}/email-dan-sms`} ><li>Email dan SMS</li></Link>
-                  <Link to={`${url}/notifikasi-otomatis`} ><li>Notifikasi Otomatis</li></Link>
-                  <Link to={`${url}/kelola-kontak`} ><li>Kelola Kontak</li></Link>
-                  <Link to={`${url}/privasi-dan-keamanan`} ><li>Privasi dan Keamanan</li></Link>
-                  <Link to={`${url}/aktivitas-login`} ><li>Aktivitas Login</li></Link>
-                  <Link to={`${url}/email-dari-instasetren`} ><li>Email dari Instastren</li></Link>
-                </Col>
-                <Col className="column-setting" sm={9}>
-                  <Switch>
-                    <Route exact path={`${url}`} ><EditProfil /></Route>
-                    <Route path={`${url}/ubah-kata-sandi`}><UbahKataSandi /></Route>
-                    <Route path={`${url}/aplikasi-dan-situs-web`}><AplikasiDanSitusWeb /></Route>
-                    <Route path={`${url}/email-dan-sms`}><EmailDanSMS /></Route>
-                    <Route path={`${url}/notifikasi-otomatis`} ><NotifikasiOtomatis /></Route>
-                    <Route path={`${url}/kelola-kontak`} ><KelolaKontak /></Route>
-                    <Route path={`${url}/privasi-dan-keamanan`}><PrivasiDanKeamanan /></Route>
-                    <Route path={`${url}/aktivitas-login`} ><AktivitasLogin /></Route>
-                    <Route path={`${url}/email-dari-instastren`}><EmailDariInstastren /></Route>
-                  </Switch>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Container >
-      </Row >
-    </Router >
+    // <Router>
+    //   <Row>
+    //     <Container >
+    //       <Row >
+    //         <Col className="card">
+    //           <Row className="card-setting">
+    //             <Col className="column-setting" sm={3}>
+    //               <Link to={`${url}`} ><li>Edit Profil</li></Link>
+    //               <Link to={`${url}/ubah-kata-sandi`} ><li>Ubah Kata Sandi</li></Link>
+    //               <Link to={`${url}/aplikasi-dan-situs-web`} ><li>Aplikasi dan Situs Web</li></Link>
+    //               <Link to={`${url}/email-dan-sms`} ><li>Email dan SMS</li></Link>
+    //               <Link to={`${url}/notifikasi-otomatis`} ><li>Notifikasi Otomatis</li></Link>
+    //               <Link to={`${url}/kelola-kontak`} ><li>Kelola Kontak</li></Link>
+    //               <Link to={`${url}/privasi-dan-keamanan`} ><li>Privasi dan Keamanan</li></Link>
+    //               <Link to={`${url}/aktivitas-login`} ><li>Aktivitas Login</li></Link>
+    //               <Link to={`${url}/email-dari-instasetren`} ><li>Email dari Instastren</li></Link>
+    //             </Col>
+    //             <Col className="column-setting" sm={9}>
+    //               <Switch>
+    //                 <Route exact path={`${url}`} ><EditProfil /></Route>
+    //                 <Route path={`${url}/ubah-kata-sandi`}><UbahKataSandi /></Route>
+    //                 <Route path={`${url}/aplikasi-dan-situs-web`}><AplikasiDanSitusWeb /></Route>
+    //                 <Route path={`${url}/email-dan-sms`}><EmailDanSMS /></Route>
+    //                 <Route path={`${url}/notifikasi-otomatis`} ><NotifikasiOtomatis /></Route>
+    //                 <Route path={`${url}/kelola-kontak`} ><KelolaKontak /></Route>
+    //                 <Route path={`${url}/privasi-dan-keamanan`}><PrivasiDanKeamanan /></Route>
+    //                 <Route path={`${url}/aktivitas-login`} ><AktivitasLogin /></Route>
+    //                 <Route path={`${url}/email-dari-instastren`}><EmailDariInstastren /></Route>
+    //               </Switch>
+    //             </Col>
+    //           </Row>
+    //         </Col>
+    //       </Row>
+    //     </Container >
+    //   </Row >
+    // </Router >
+    <Container className="settings">
+      <Tab.Container id="left-tabs-example" defaultActiveKey="1">
+        <Row>
+          <Col sm={3} className="side-right">
+            <Nav variant="pills" className="flex-column">
+              <Nav.Item>
+                <Nav.Link eventKey="1">Tab 1</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="2">Tab 2</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="3">Tab 1</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="4">Tab 2</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="5">Tab 1</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="6">Tab 2</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="7">Tab 1</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="8">Tab 2</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="9">Tab 1</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Col>
+          <Col sm={9}>
+            <Tab.Content>
+              <Tab.Pane eventKey="1">
+                <EditProfil />
+              </Tab.Pane>
+              <Tab.Pane eventKey="2">
+                <UbahKataSandi />
+              </Tab.Pane>
+              <Tab.Pane eventKey="3">
+                <AplikasiDanSitusWeb />
+              </Tab.Pane>
+              <Tab.Pane eventKey="4">
+                <EmailDanSMS />
+              </Tab.Pane>
+              <Tab.Pane eventKey="5">
+                <NotifikasiOtomatis />
+              </Tab.Pane>
+              <Tab.Pane eventKey="6">
+                <KelolaKontak />
+              </Tab.Pane>
+              <Tab.Pane eventKey="7">
+                <PrivasiDanKeamanan />
+              </Tab.Pane>
+              <Tab.Pane eventKey="8">
+                <AktivitasLogin />
+              </Tab.Pane>
+              <Tab.Pane eventKey="9">
+                <EmailDariInstastren />
+              </Tab.Pane>
+            </Tab.Content>
+          </Col>
+        </Row>
+      </Tab.Container>
+    </Container>
   )
 }
 
@@ -146,8 +215,6 @@ class UbahKataSandi extends Component {
             <p>Lupa kata sandi</p>
           </Col>
         </Row>
-
-
       </div>)
   }
 }

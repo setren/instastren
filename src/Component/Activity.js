@@ -6,37 +6,7 @@ class Activity extends Component {
     console.log('activity render')
     return (
       <Container >
-        <Row className="body">
-          <Col sm={12}>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-            <div className="card">Anonym User menyukai postingan anda</div>
-          </Col>
-        </Row>
+
       </Container >
     )
   }
