@@ -1,18 +1,18 @@
 import { Component } from 'react';
-import { Col, Container, FormControl, Row, Tab, Form, Button, Tabs, Nav, TabContainer } from 'react-bootstrap';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch
-} from "react-router-dom";
+import { Col, Container, FormControl, Row, Tab, Form, Button, Tabs, Nav } from 'react-bootstrap';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link,
+//   useRouteMatch
+// } from "react-router-dom";
 import Template from '../Templates/Template';
 
 
 function Settings() {
   console.log('settings render')
-  let { url } = useRouteMatch();
+  // let { url } = useRouteMatch();
   return (
     // <Router>
     //   <Row>
@@ -50,74 +50,76 @@ function Settings() {
     //     </Container >
     //   </Row >
     // </Router >
-    <Container className="settings">
-      <Tab.Container id="left-tabs-example" defaultActiveKey="1">
-        <Row>
-          <Col sm={3} className="side-right">
-            <Nav variant="pills" className="flex-column">
-              <Nav.Item>
-                <Nav.Link eventKey="1">Tab 1</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="2">Tab 2</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="3">Tab 1</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="4">Tab 2</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="5">Tab 1</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="6">Tab 2</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="7">Tab 1</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="8">Tab 2</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="9">Tab 1</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-          <Col sm={9}>
-            <Tab.Content>
-              <Tab.Pane eventKey="1">
-                <EditProfil />
-              </Tab.Pane>
-              <Tab.Pane eventKey="2">
-                <UbahKataSandi />
-              </Tab.Pane>
-              <Tab.Pane eventKey="3">
-                <AplikasiDanSitusWeb />
-              </Tab.Pane>
-              <Tab.Pane eventKey="4">
-                <EmailDanSMS />
-              </Tab.Pane>
-              <Tab.Pane eventKey="5">
-                <NotifikasiOtomatis />
-              </Tab.Pane>
-              <Tab.Pane eventKey="6">
-                <KelolaKontak />
-              </Tab.Pane>
-              <Tab.Pane eventKey="7">
-                <PrivasiDanKeamanan />
-              </Tab.Pane>
-              <Tab.Pane eventKey="8">
-                <AktivitasLogin />
-              </Tab.Pane>
-              <Tab.Pane eventKey="9">
-                <EmailDariInstastren />
-              </Tab.Pane>
-            </Tab.Content>
-          </Col>
-        </Row>
-      </Tab.Container>
-    </Container>
+    <Template>
+      <Container className="settings">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="1">
+          <Row className="settings">
+            <Col sm={3} className="side-left">
+              <Nav variant="pills" className="flex-column">
+                <Nav.Item>
+                  <Nav.Link eventKey="1">Edit Profil</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="2">Ubah Kata Sandi</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="3">Aplikasi dan Situs Web</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="4">Email dan SMS</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="5">Notifikasi Otomatis</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="6">Kelola Kontak</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="7">Privasi dan Keamanan</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="8">Aktivitas Login</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="9">Email dari Instagram</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+            <Col sm={9} className="side-right">
+              <Tab.Content>
+                <Tab.Pane eventKey="1">
+                  <EditProfil />
+                </Tab.Pane>
+                <Tab.Pane eventKey="2">
+                  <UbahKataSandi />
+                </Tab.Pane>
+                <Tab.Pane eventKey="3">
+                  <AplikasiDanSitusWeb />
+                </Tab.Pane>
+                <Tab.Pane eventKey="4">
+                  <EmailDanSMS />
+                </Tab.Pane>
+                <Tab.Pane eventKey="5">
+                  <NotifikasiOtomatis />
+                </Tab.Pane>
+                <Tab.Pane eventKey="6">
+                  <KelolaKontak />
+                </Tab.Pane>
+                <Tab.Pane eventKey="7">
+                  <PrivasiDanKeamanan />
+                </Tab.Pane>
+                <Tab.Pane eventKey="8">
+                  <AktivitasLogin />
+                </Tab.Pane>
+                <Tab.Pane eventKey="9">
+                  <EmailDariInstastren />
+                </Tab.Pane>
+              </Tab.Content>
+            </Col>
+          </Row>
+        </Tab.Container>
+      </Container>
+    </Template>
   )
 }
 

@@ -1,13 +1,13 @@
 import { Component } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import Template from '../Templates/Template';
 
 class Activity extends Component {
   render() {
     console.log('activity render')
     return (
-      <Container >
-
-      </Container >
+      <Template>
+        activity
+      </Template>
     )
   }
 }

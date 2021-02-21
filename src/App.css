@@ -86,17 +86,21 @@
   padding-bottom: 5px !important;
 }
 /* template */
-.container {
+.root .template.container {
   padding-left: 0px !important;
   padding-right: 0px !important;
   background-color: white;
+  margin-top: 90px;
 }
 /* app.js */
-.container-fluid .header {
-  background-color: white;
-  margin-bottom: 20px;
+.header.container-fluid {
+  position: fixed;
+  top: 0px;
+  z-index: 3;
   border: solid lightgray 1px;
+  background-color: white;
 }
+
 .container-fluid .footer {
   margin-top: 20px;
   text-align: center;
@@ -117,12 +121,21 @@
 /* settings.js */
 .body.row {
   background-color: white;
+  margin-left: 0px;
+  margin-right: 0px;
 }
-.side-right.col-sm-3 {
+.side-left.col-sm-3 {
   /* border: black solid 1px !important; */
-  padding-left: 0px;
-  padding-right: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
   width: 25%;
+  border-right: solid lightgray 1px;
+}
+.side-right.col-sm-9 {
+  /* border: black solid 1px !important; */
+  margin-left: 0px;
+  margin-right: 0px;
+  max-width: 708px;
   border-right: solid lightgray 1px;
 }
 .nav-pills .nav-link {
@@ -130,19 +143,20 @@
   color: black;
 }
 .nav-item .nav-link:hover {
-  background-color: #eeecec !important;
+  background-color: #e8e8e8 !important;
   color: black !important;
   border-left: gray solid 1px;
 }
 .nav-pills .nav-link.active {
-  background-color: #eeecec !important;
-  border-left: gray solid 1px;
+  background-color: transparent !important;
+  border-left: gray solid 2px;
   color: black !important;
+  font-weight: bolder;
 }
 .container.settings {
   background-color: white;
-  padding-right: 20px !important;
-  padding-left: 20px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
   border: solid lightgray 1px;
 }
 /* home.js */
@@ -172,6 +186,7 @@
 .card-footer .form-control {
   min-height: 50px;
   font-size: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.125) !important;
 }
 .card-body img {
   width: 40px;
@@ -190,7 +205,7 @@
   border-bottom: solid white 0px;
 }
 .col-sm-4 p {
-  margin-left: 50px;
+  margin-left: 40px;
   font-weight: bold;
   color: gray;
 }
@@ -210,4 +225,12 @@
   font-weight: lighter;
   font-size: 12px;
   color: gray;
+}
+.read-more-button:hover {
+  color: gray;
+  font-weight: bold;
+}
+.read-more-button {
+  color: gray;
+  font-weight: bold;
 }

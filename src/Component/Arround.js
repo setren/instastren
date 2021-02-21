@@ -1,14 +1,16 @@
 import { Component } from 'react';
-import { Col, Container, Row, Card, FormControl } from 'react-bootstrap';
+import Template from '../Templates/Template';
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class Arround extends Component {
-
   render() {
     console.log('arround render')
     return (
-      <Container >
-
-      </Container >
+      <Template>
+        arround
+      </Template>
     )
   }
 }

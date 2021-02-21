@@ -1,13 +1,13 @@
 import { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import Template from '../Templates/Template';
 
 class Message extends Component {
   render() {
     console.log('message render')
     return (
-      <Container >
-
-      </Container >
+      <Template>
+        message
+      </Template>
     )
   }
 }

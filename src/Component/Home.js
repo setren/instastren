@@ -1,38 +1,66 @@
 import { Component } from 'react';
-import { Col, Row, Card, FormControl } from 'react-bootstrap';
+import { Col, Card, FormControl } from 'react-bootstrap';
 import Template from '../Templates/Template';
 import db from "../db.json";
+import db1 from "../db1.json";
+import db2 from "../db2.json";
+import ReadMoreReact from 'read-more-react';
+
+
 
 class Home extends Component {
   state = {
     data: db,
+    data1: db1,
+    data2: db2,
+    postCount1: false,
+    postCount2: false,
   }
+  componentDidMount() {
+    window.addEventListener('scroll', this.scroll)
+  }
+
+  scroll = (ev) => {
+    var st = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+    if (!st) {
+      this.setState({ postCount1: false });
+    } else if ((st + document.documentElement.clientHeight) >= document.documentElement.scrollHeight) {
+      if (this.state.postCount1 === false) {
+        this.setState({ postCount1: true });
+      } else if (this.state.postCount1 === true) {
+        this.setState({ postCount2: true });
+      }
+    }
+  }
+
   render() {
     console.log('home render')
     return (
-      < Template >
-        <Col sm={8}>
+      <Template >
+        <Col sm={8} >
           <Posts data={this.state.data} />
+          {this.state.postCount1 === true ? < Posts data={this.state.data1} /> : null}
+          {this.state.postCount2 === true ? < Posts data={this.state.data2} /> : null}
         </Col>
         <Col sm={4}>
           <Card className="my-profile">
             <Card.Header>
-              <Card.Title><img src={this.state.data[0].data.user.profile_pic_url} /> {this.state.data[0].data.user.username}</Card.Title>
+              <Card.Title><img src={this.state.data.data.user.profile_pic_url} /> {this.state.data.data.user.username}</Card.Title>
             </Card.Header>
           </Card>
           <p>Saran untuk anda</p>
           <Card className="people-may-you-know">
             <Card.Header>
-              <Card.Title><img src={this.state.data[0].data.user.edge_web_feed_timeline.edges[4].node.owner.profile_pic_url} /> {this.state.data[0].data.user.edge_web_feed_timeline.edges[4].node.owner.username}</Card.Title>
+              <Card.Title><img src={this.state.data.data.user.edge_web_feed_timeline.edges[4].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[4].node.owner.username}</Card.Title>
             </Card.Header>
             <Card.Header>
-              <Card.Title><img src={this.state.data[0].data.user.edge_web_feed_timeline.edges[6].node.owner.profile_pic_url} /> {this.state.data[0].data.user.edge_web_feed_timeline.edges[6].node.owner.username}</Card.Title>
+              <Card.Title><img src={this.state.data.data.user.edge_web_feed_timeline.edges[6].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[6].node.owner.username}</Card.Title>
             </Card.Header>
             <Card.Header>
-              <Card.Title><img src={this.state.data[0].data.user.edge_web_feed_timeline.edges[8].node.owner.profile_pic_url} /> {this.state.data[0].data.user.edge_web_feed_timeline.edges[8].node.owner.username}</Card.Title>
+              <Card.Title><img src={this.state.data.data.user.edge_web_feed_timeline.edges[8].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[8].node.owner.username}</Card.Title>
             </Card.Header>
             <Card.Header>
-              <Card.Title><img src={this.state.data[0].data.user.edge_web_feed_timeline.edges[10].node.owner.profile_pic_url} /> {this.state.data[0].data.user.edge_web_feed_timeline.edges[10].node.owner.username}</Card.Title>
+              <Card.Title><img src={this.state.data.data.user.edge_web_feed_timeline.edges[10].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[10].node.owner.username}</Card.Title>
             </Card.Header>
           </Card>
         </Col>
@@ -47,12 +75,12 @@ class Posts extends Component {
     console.log('posts render')
     return (
       <div >
-        {this.props.data.map((item, i) =>
+        {this.props.data.data.user.edge_web_feed_timeline.edges.map((item, i) =>
           <Card key={i}>
             <Card.Header>
-              <Card.Title><img src={this.props.data[0].data.user.edge_web_feed_timeline.edges[i].node.owner.profile_pic_url} /> {this.props.data[0].data.user.edge_web_feed_timeline.edges[i].node.owner.username}</Card.Title>
+              <Card.Title><img src={item.node.owner.profile_pic_url} /> {item.node.owner.username}</Card.Title>
             </Card.Header>
-            <Card.Img variant="top" src={this.props.data[0].data.user.edge_web_feed_timeline.edges[i].node.display_url} />
+            <Card.Img variant="top" src={item.node.display_url} />
 
             <Card.Body>
               <div>
@@ -62,12 +90,18 @@ class Posts extends Component {
                 <img className="bookmark" src="card-bookmark.png" />
               </div>
               <br />
-              <Card.Title><strong>{this.props.data[0].data.user.edge_web_feed_timeline.edges[i].node.edge_media_preview_like.count} suka</strong></Card.Title>
+              <Card.Title><strong>{item.node.edge_media_preview_like.count} suka</strong></Card.Title>
               <Card.Text>
-                <strong>{this.props.data[0].data.user.edge_web_feed_timeline.edges[i].node.owner.username} </strong>{this.props.data[0].data.user.edge_web_feed_timeline.edges[i].node.edge_media_to_caption.edges[0].node.text}
+                <strong>{item.node.owner.username} </strong>
+                <ReadMoreReact text={item.node.edge_media_to_caption.edges[0].node.text}
+                  min={80}
+                  ideal={100}
+                  max={120}
+                  readMoreText={'selengkapnya'} />
+
               </Card.Text>
               <Card.Subtitle>
-                {this.props.data[0].data.user.edge_web_feed_timeline.edges[i].node.taken_at_timestamp * 1000} jam yag lalu
+                {item.node.taken_at_timestamp} jam yag lalu
               </Card.Subtitle>
             </Card.Body>
             <Card.Footer><FormControl placeholder="😊  Tambahkan komentar" /></Card.Footer>

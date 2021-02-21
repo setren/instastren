@@ -19,7 +19,7 @@ class App extends Component {
     console.log('app render')
     return (
       <Router>
-        <Container fluid>
+        <Container fluid className="header">
           <Row className="header">
             <Container>
               <Row>
