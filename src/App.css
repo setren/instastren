@@ -159,6 +159,29 @@
   padding-left: 0px !important;
   border: solid lightgray 1px;
 }
+.nav-pills a {
+  color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-decoration: none !important;
+  background-color: none;
+}
+.nav-pills a:hover {
+  background-color: lightgray;
+  border-left: 1px solid black;
+}
+.nav-pills .active {
+  color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-decoration: none !important;
+  background-color: pink;
+}
+
 /* home.js */
 .card {
   margin: 20px;
@@ -204,6 +227,10 @@
 .my-profile.card .card-header {
   border-bottom: solid white 0px;
 }
+.container.my-profile {
+  position: fixed;
+  width: auto;
+}
 .col-sm-4 p {
   margin-left: 40px;
   font-weight: bold;
@@ -227,10 +254,29 @@
   color: gray;
 }
 .read-more-button:hover {
-  color: gray;
-  font-weight: bold;
+  cursor: pointer;
 }
 .read-more-button {
   color: gray;
   font-weight: bold;
+}
+.popover-body a img {
+  width: 25px;
+  height: 25px;
+}
+.popover-body a {
+  color: black;
+  font-weight: bold;
+  font-size: 17.5px;
+}
+.popover-body a:hover {
+  color: gray;
+  font-weight: bold;
+  text-decoration: none;
+}
+/* arround.js */
+.card.arround {
+  width: 15rem;
+  height: 15rem;
+  display: inline-block;
 }

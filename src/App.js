@@ -1,6 +1,6 @@
 import './App.css';
-import { Component } from 'react';
-import { Col, Container, Navbar, Row, } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Col, Container, Navbar, Row, Popover, OverlayTrigger } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,6 +13,14 @@ import Message from './Component/Message'
 import Arround from './Component/Arround'
 import Activity from './Component/Activity'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import avatar from "./Icons/avatar.png"
+import compass from "./Icons/compass.png"
+import home from "./Icons/home.png"
+import love from "./Icons/love.png"
+import plane from "./Icons/paper-plane.png"
+import bookmark from "./Icons/bookmark.png"
+import settings from "./Icons/settings.png"
+import switchpng from "./Icons/switchpng.png"
 
 class App extends Component {
   render() {
@@ -32,11 +40,30 @@ class App extends Component {
                 </Col>
                 <Col sm={4} >
                   <Navbar className="navbar-icons">
-                    <Link to="/"><img className="icon-header" src="home.png" ></img></Link>
-                    <Link to="/message"><img className="icon-header" src="paper-plane.png" ></img></Link>
-                    <Link to="/activity"><img className="icon-header" src="love.png" ></img></Link>
-                    <Link to="/arround"><img className="icon-header" src="compass.png" ></img></Link>
-                    <Link to="/settings"><img className="icon-header" src="avatar.png" ></img></Link>
+                    <Link to="/"><img className="icon-header" alt="icon-header" src={home} ></img></Link>
+                    <Link to="/message"><img className="icon-header" alt="icon-header" src={plane} ></img></Link>
+                    <Link to="/activity"><img className="icon-header" alt="icon-header" src={love} ></img></Link>
+                    <Link to="/arround"><img className="icon-header" alt="icon-header" src={compass} ></img></Link>
+                    <OverlayTrigger
+                      trigger="click"
+                      key="bottom"
+                      placement="bottom"
+                      overlay={
+                        <Popover id={"popover-positioned-bottom"}>
+                          <Popover.Content>
+                            <Link to="#profil"><img className="icon-header" alt="icon-header" src={avatar} ></img>  Profil</Link>
+                            <br />
+                            <Link to="#disimpan"><img className="icon-header" alt="icon-header" src={bookmark} ></img>  Disimpan</Link>
+                            <br />
+                            <Link to="/settings"><img className="icon-header" alt="icon-header" src={settings} ></img>  Pengaturan</Link>
+                            <br />
+                            <Link to="#ganti-akun"><img className="icon-header" alt="icon-header" src={switchpng} ></img>  Ganti Akun</Link>
+                          </Popover.Content>
+                        </Popover>
+                      }
+                    >
+                      <img className="icon-header" alt="icon-header" src={avatar} ></img>
+                    </OverlayTrigger>
                   </Navbar>
                 </Col>
               </Row>

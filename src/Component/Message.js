@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Template from '../Templates/Template';
 
 class Message extends Component {

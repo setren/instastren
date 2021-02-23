@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { Container, Row } from "react-bootstrap";
 
 class Template extends Component {
