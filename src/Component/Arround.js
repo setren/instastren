@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { Card } from 'react-bootstrap';
-import Template from '../Templates/Template';
+import { Container, Row, Card } from 'react-bootstrap';
 import db from "../ardb.json";
 import db1 from "../ardb1.json";
 import db2 from "../ardb2.json";
-
-const url = "https://www.instagram.com/explore/grid/?is_prefetch=false&omit_cover_media=false&module=explore_popular&use_sectional_payload=true&cluster_id=explore_all%3A0&include_fixed_destinations=true"
+import MainTemplate from '../MainTemplate';
 
 class Arround extends Component {
   state = {
@@ -18,27 +15,6 @@ class Arround extends Component {
   }
   async componentDidMount() {
     window.addEventListener('scroll', this.scroll)
-    const result = await axios.get(url)
-    console.log(result)
-    // try {
-    //   // const result = await axios.get(url, {
-    //   //   withCredentials: true,
-    //   //   // headers: { Cookie: document.cookie },
-    //   // })
-    //   // console.log(result)
-    //   const options = {
-    //     method: "GET",
-    //     // credentials: "include",
-    //     // headers: new Headers({ 'Cookie': cookie }),
-    //     mode: 'no-cors'
-    //   };
-    //   fetch(url, options).then(async data => {
-    //     const asd = await data.json()
-    //     console.log(asd)
-    //   })
-    // } catch (error) {
-    //   console.log(error)
-    // }
   }
 
   scroll = (ev) => {
@@ -55,13 +31,16 @@ class Arround extends Component {
   }
   render() {
     console.log('arround render')
-    console.log(window)
     return (
-      <Template >
-        <Posts data={this.state.data} />
-        {this.state.postCount1 === true ? < Posts data={this.state.data1} /> : null}
-        {this.state.postCount2 === true ? < Posts data={this.state.data2} /> : null}
-      </Template >
+      <MainTemplate>
+        <Container className="template">
+          <Row className="body">
+            <Posts data={this.state.data} />
+            {this.state.postCount1 === true ? < Posts data={this.state.data1} /> : null}
+            {this.state.postCount2 === true ? < Posts data={this.state.data2} /> : null}
+          </Row>
+        </Container>
+      </MainTemplate>
     )
   }
 }

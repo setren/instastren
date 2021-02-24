@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Col, Card, FormControl, Container } from 'react-bootstrap';
-import Template from '../Templates/Template';
+import { Row, Col, Card, FormControl, Container } from 'react-bootstrap';
 import db from "../db.json";
 import db1 from "../db1.json";
 import db2 from "../db2.json";
 import ReadMoreReact from 'read-more-react';
+import MainTemplate from '../MainTemplate';
 
 
 
@@ -36,37 +36,41 @@ class Home extends Component {
   render() {
     console.log('home render')
     return (
-      <Template >
-        <Col sm={8} >
-          <Posts data={this.state.data} />
-          {this.state.postCount1 === true ? < Posts data={this.state.data1} /> : null}
-          {this.state.postCount2 === true ? < Posts data={this.state.data2} /> : null}
-        </Col>
-        <Col sm={4} >
-          <Container className="my-profile">
-            <Card className="my-profile">
-              <Card.Header>
-                <Card.Title><img alt="card" src={this.state.data.data.user.profile_pic_url} /> {this.state.data.data.user.username}</Card.Title>
-              </Card.Header>
-            </Card>
-            <p>Saran untuk anda</p>
-            <Card className="people-may-you-know">
-              <Card.Header>
-                <Card.Title><img alt="card" src={this.state.data.data.user.edge_web_feed_timeline.edges[4].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[4].node.owner.username}</Card.Title>
-              </Card.Header>
-              <Card.Header>
-                <Card.Title><img alt="card" src={this.state.data.data.user.edge_web_feed_timeline.edges[6].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[6].node.owner.username}</Card.Title>
-              </Card.Header>
-              <Card.Header>
-                <Card.Title><img alt="card" src={this.state.data.data.user.edge_web_feed_timeline.edges[8].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[8].node.owner.username}</Card.Title>
-              </Card.Header>
-              <Card.Header>
-                <Card.Title><img alt="card" src={this.state.data.data.user.edge_web_feed_timeline.edges[10].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[10].node.owner.username}</Card.Title>
-              </Card.Header>
-            </Card>
-          </Container>
-        </Col>
-      </Template >
+      <MainTemplate>
+        <Container className="template">
+          <Row className="body">
+            <Col sm={8} >
+              <Posts data={this.state.data} />
+              {this.state.postCount1 === true ? < Posts data={this.state.data1} /> : null}
+              {this.state.postCount2 === true ? < Posts data={this.state.data2} /> : null}
+            </Col>
+            <Col sm={4} >
+              <Container className="my-profile">
+                <Card className="my-profile">
+                  <Card.Header>
+                    <Card.Title><img alt="card" src={this.state.data.data.user.profile_pic_url} /> {this.state.data.data.user.username}</Card.Title>
+                  </Card.Header>
+                </Card>
+                <p>Saran untuk anda</p>
+                <Card className="people-may-you-know">
+                  <Card.Header>
+                    <Card.Title><img alt="card" src={this.state.data.data.user.edge_web_feed_timeline.edges[4].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[4].node.owner.username}</Card.Title>
+                  </Card.Header>
+                  <Card.Header>
+                    <Card.Title><img alt="card" src={this.state.data.data.user.edge_web_feed_timeline.edges[6].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[6].node.owner.username}</Card.Title>
+                  </Card.Header>
+                  <Card.Header>
+                    <Card.Title><img alt="card" src={this.state.data.data.user.edge_web_feed_timeline.edges[8].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[8].node.owner.username}</Card.Title>
+                  </Card.Header>
+                  <Card.Header>
+                    <Card.Title><img alt="card" src={this.state.data.data.user.edge_web_feed_timeline.edges[10].node.owner.profile_pic_url} /> {this.state.data.data.user.edge_web_feed_timeline.edges[10].node.owner.username}</Card.Title>
+                  </Card.Header>
+                </Card>
+              </Container>
+            </Col>
+          </Row>
+        </Container>
+      </MainTemplate>
     )
   }
 }

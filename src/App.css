@@ -125,18 +125,21 @@
   margin-right: 0px;
 }
 .side-left.col-sm-3 {
-  /* border: black solid 1px !important; */
-  margin-left: 10px;
-  margin-right: 10px;
   width: 25%;
+  border-left: solid lightgray 1px;
   border-right: solid lightgray 1px;
+  border-top: solid lightgray 1px;
+  border-bottom: solid lightgray 1px;
 }
 .side-right.col-sm-9 {
   /* border: black solid 1px !important; */
   margin-left: 0px;
   margin-right: 0px;
   max-width: 708px;
+  border-left: solid lightgray 1px;
   border-right: solid lightgray 1px;
+  border-top: solid lightgray 1px;
+  border-bottom: solid lightgray 1px;
 }
 .nav-pills .nav-link {
   border-radius: 0px !important;
@@ -159,6 +162,7 @@
   padding-left: 0px !important;
   border: solid lightgray 1px;
 }
+
 .nav-pills a {
   color: black;
   padding-top: 10px;
@@ -173,13 +177,8 @@
   border-left: 1px solid black;
 }
 .nav-pills .active {
-  color: black;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 10px;
-  padding-left: 10px;
-  text-decoration: none !important;
-  background-color: pink;
+  background-color: lightgray;
+  border-left: 1px solid black;
 }
 
 /* home.js */
