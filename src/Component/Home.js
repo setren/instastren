@@ -86,7 +86,9 @@ class Posts extends Component {
             <Card.Header>
               <Card.Title><img alt="card-title" src={item.node.owner.profile_pic_url} /> {item.node.owner.username}</Card.Title>
             </Card.Header>
-            <Card.Img variant="top" src={item.node.display_url} />
+            {item.node.is_video === true ?
+              <video src={item.node.video_url} type="video/mp4" poster={item.node.display_url} controls /> :
+              <Card.Img variant="top" src={item.node.display_url} />}
             <Card.Body>
               <div>
                 <img alt="card-icons" src="card-love.png" />

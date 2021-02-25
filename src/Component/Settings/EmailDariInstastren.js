@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Tab, Row, Col, Container } from 'react-bootstrap';
+import { Tab, Tabs, Row, Col, Container } from 'react-bootstrap';
 import MainTemplate from '../../MainTemplate';
 import SettingsTemplate from '../SettingsTemplate';
 
@@ -12,12 +12,26 @@ export default class EmailDariInstastren extends Component {
             <Row className="settings">
               <SettingsTemplate  {...this.props} />
               <Col sm={9} className="side-right">
-                <Container>EmailDariInstastren</Container>
+                <Container>
+                  <h1>Email dari Instastren</h1>
+                  <Tabs defaultActiveKey="keamanan" transition={false} id="noanim-tab-example">
+                    <Tab eventKey="keamanan" title="KEAMANAN">
+                      <p>Email keamanan dan login dari Instagram dalam 14 hari terakhir akan muncul di sini. Anda bisa menggunakannya untuk memverifikasi email mana yang asli dan yang palsu. Pelajari selengkapnya.</p>
+                      <hr />
+                      <p>Upaya login baru ke Instagram dari Chrome di Linux<br />
+                      20 Februari 2021 15:01<br />
+                      Dikirim ke: abdullahfathurrahman96@gmail.com · Dikirim dari: security@mail.instagram.com</p>
+                    </Tab>
+                    <Tab eventKey="lainnya" title="LAINNYA">
+                      <p>Email lain dari Instagram dalam 14 hari terakhir yang bukan tentang keamanan atau login akan muncul di sini. Anda bisa menggunakannya untuk memverifikasi email yang asli dan yang palsu. Pelajari selengkapnya.</p>
+                    </Tab>
+                  </Tabs>
+                </Container>
               </Col>
             </Row>
           </Tab.Container>
         </Container>
-      </MainTemplate>
+      </MainTemplate >
     )
   }
 }
