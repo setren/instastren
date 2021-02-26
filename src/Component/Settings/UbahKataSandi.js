@@ -12,7 +12,6 @@ export default class UbahKataSandi extends Component {
     localStorage.setItem("sandi", JSON.stringify(this.state.sandi))
   }
   onSubmit = (e) => {
-    e.preventDefault()
     if (e.target.sandi.value === e.target.konfirmasisandi.value) {
       this.setState({ sandi: e.target.sandi.value })
     } else {

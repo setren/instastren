@@ -173,12 +173,10 @@
   background-color: none;
 }
 .nav-pills a:hover {
-  background-color: lightgray;
-  border-left: 1px solid black;
+  border-left: 2px solid black;
 }
 .nav-pills .active {
-  background-color: lightgray;
-  border-left: 1px solid black;
+  border-left: 2px solid black;
 }
 
 /* home.js */

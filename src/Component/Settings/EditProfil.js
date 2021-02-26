@@ -15,14 +15,14 @@ export default class EditProfil extends Component {
       email: "abdullahfathurrahman@gmail.com",
       nomorTelepon: 6287708227032,
       jenisKelamin: "laki-laki",
-      saranAkun: true
+      saranAkun: false
     }
   }
   componentDidUpdate() {
     localStorage.setItem("EditProfil", JSON.stringify(this.state.EditProfil))
   }
   onSubmit = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     this.setState({
       EditProfil:
       {
