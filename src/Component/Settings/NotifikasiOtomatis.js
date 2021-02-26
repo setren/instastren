@@ -465,7 +465,7 @@ export default class NotifikasiOtomatis extends Component {
     const newCollection = update(collection, { notifikasiOtomatis: { push_prefs: { [i]: { checked: { $set: value } } } } })
     console.log(newCollection)
     console.log(this.state)
-    this.setState({ notifikasiOtomatis: newCollection })
+    // this.setState({ notifikasiOtomatis: newCollection })
   }
 
   render() {
