@@ -9,8 +9,8 @@ class Activity extends Component {
       <MainTemplate>
         <Container className="template">
           <Row className="body">
-            activity
-        </Row>
+            <p>Activity</p>
+          </Row>
         </Container>
       </MainTemplate>
     )

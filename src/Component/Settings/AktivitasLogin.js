@@ -164,8 +164,8 @@ class Login extends Component {
     return (
       <div>
         {
-          this.state.logs.data.sessions.map((item) =>
-            <div>
+          this.state.logs.data.sessions.map((item, i) =>
+            <div key={i}>
               <p>
                 {item.location}<br />
                 {item.timestamp} {item.device}

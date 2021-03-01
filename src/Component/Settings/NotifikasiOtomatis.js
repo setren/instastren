@@ -452,7 +452,7 @@ export default class NotifikasiOtomatis extends Component {
     localStorage.setItem("notifikasiOtomatis", JSON.stringify(this.state))
   }
 
-  onChangeValue(e, i, ii) {
+  onChangeValue(e, i) {
     // // console.log(e.target.value)
     // // console.log(i)
     // // console.log(ii)
@@ -465,8 +465,6 @@ export default class NotifikasiOtomatis extends Component {
     const value = e.target.value
     const collection = this.state
     const newCollection = update(collection, { notifikasiOtomatis: { push_prefs: { [i]: { checked: { $set: parseInt(value) } } } } })
-    console.log(newCollection.notifikasiOtomatis)
-    console.log(this.state.notifikasiOtomatis)
     this.setState({ notifikasiOtomatis: newCollection.notifikasiOtomatis })
   }
 
@@ -496,7 +494,7 @@ export default class NotifikasiOtomatis extends Component {
                                   name="formHorizontalRadios"
                                   value={item[1]}
                                   defaultChecked={this.state.notifikasiOtomatis.push_prefs[i].checked === item[1]}
-                                  onChange={(e) => this.onChangeValue(e, i, ii)}
+                                  onChange={(e) => this.onChangeValue(e, i)}
                                 />
                               )
                             }

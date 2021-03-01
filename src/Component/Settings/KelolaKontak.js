@@ -2353,8 +2353,8 @@ class Kontak extends Component {
     return (
       <div>
         {
-          this.state.kontak.data.user.contact_history.map((item) =>
-            <div>
+          this.state.kontak.data.user.contact_history.map((item, i) =>
+            <div key={i}>
               <strong>{item.first_name} {item.last_name}</strong>
               <p>+62{item.raw_value}</p>
               <br />
