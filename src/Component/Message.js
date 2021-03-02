@@ -16,7 +16,7 @@ class Message extends Component {
   handleClose = () => {
     this.setState({ show: false })
   }
-  onSubmit = (e) => {
+  crudCreate = (e) => {
     e.preventDefault()
     const data = {
       name: e.target.name.value,
@@ -31,6 +31,15 @@ class Message extends Component {
           this.setState({ comments });
         }))
   }
+  crudDelete = (id) => {
+    axios.delete("http://localhost:3000/comments/" + id)
+      .then(axios.get("http://localhost:3000/comments")
+        .then(res => {
+          const comments = res.data;
+          this.setState({ comments });
+        }))
+    this.setState({ showAlert: false })
+  }
   componentDidMount() {
     axios.get("http://localhost:3000/comments")
       .then(res => {
@@ -38,9 +47,9 @@ class Message extends Component {
         this.setState({ comments });
       })
   }
-  alertHandleOpen = (i) => {
+  alertHandleOpen = (item) => {
     this.setState({ showAlert: true })
-    this.setState({ indexAlert: i })
+    this.setState({ indexAlert: item })
   }
   alertHandleClose = () => {
     this.setState({ showAlert: false })
@@ -51,13 +60,13 @@ class Message extends Component {
         <Container className="template">
           <br />
           <Row>
-            <Dialog show={this.state.show} handleOpen={this.handleOpen} handleClose={this.handleClose} onSubmit={this.onSubmit} />
+            <Dialog show={this.state.show} handleOpen={this.handleOpen} handleClose={this.handleClose} crudCreate={this.crudCreate} />
             <Button onClick={this.handleOpen} className="ml-3" variant="secondary">Add</Button>
           </Row>
           <br />
           <Row className="body">
             <Table striped bordered hover>
-              <Alert index={this.state.indexAlert} show={this.state.showAlert} handleOpen={this.alertHandleOpen} handleClose={this.alertHandleClose} />
+              <Alert index={this.state.indexAlert} show={this.state.showAlert} crudDelete={this.crudDelete} handleOpen={this.alertHandleOpen} handleClose={this.alertHandleClose} />
               <thead>
                 <tr>
                   <th>Id</th>
@@ -68,9 +77,9 @@ class Message extends Component {
               </thead>
               {
                 this.state.comments.map((item, i) =>
-                  <tbody key={i}>
-                    <tr onClick={e => this.alertHandleOpen(i)}>
-                      <td>{item.id}</td>
+                  <tbody key={item.id}>
+                    <tr onClick={e => this.alertHandleOpen(item.id)}>
+                      <td>{i + 1}</td>
                       <td>{item.name}</td>
                       <td>{item.email}</td>
                       <td>{item.body}</td>
@@ -92,9 +101,8 @@ class Dialog extends Component {
         show={this.props.show}
         onHide={this.props.handleClose}
         backdrop="static"
-        keyboard={false}
       >
-        <Form onSubmit={e => this.props.onSubmit(e)}>
+        <Form onSubmit={e => this.props.crudCreate(e)}>
           <Modal.Header closeButton>
             <Modal.Title>Add</Modal.Title>
           </Modal.Header>
@@ -119,14 +127,6 @@ class Dialog extends Component {
 }
 
 class Alert extends Component {
-  onDelete = (index) => {
-    // Whatever you want to do with that item
-    // axios.delete("http://localhost:3000/comments", { params: index })
-    //   .then(response => {
-    //     console.log(response);
-    //   });
-    // console.log(this.props.index)
-  }
   render() {
     return (
       <Modal
@@ -141,7 +141,7 @@ class Alert extends Component {
           <Button variant="secondary" onClick={this.props.handleClose}>
             Discard
           </Button>
-          <Button onClick={this.onDelete} variant="primary">Delete</Button>
+          <Button onClick={e => this.props.crudDelete(this.props.index)} variant="primary">Delete</Button>
         </Modal.Footer>
       </Modal>
     )

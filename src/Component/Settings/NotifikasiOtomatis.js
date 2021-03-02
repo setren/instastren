@@ -489,6 +489,7 @@ export default class NotifikasiOtomatis extends Component {
                             {
                               item.options.map((item, ii) =>
                                 <Form.Check key={ii}
+                                  id={this.state.notifikasiOtomatis.push_prefs[i].name + item[1]}
                                   type="radio"
                                   label={item[0]}
                                   name="formHorizontalRadios"
