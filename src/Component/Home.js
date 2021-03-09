@@ -98,14 +98,15 @@ class Posts extends Component {
               </div>
               <br />
               <Card.Title><strong>{item.node.edge_media_preview_like.count} suka</strong></Card.Title>
-              <Card.Text>
+              <div className="card-text">
                 <strong>{item.node.owner.username} </strong>
-                <ReadMoreReact text={item.node.edge_media_to_caption.edges[0].node.text}
+                <ReadMoreReact
+                  text={item.node.edge_media_to_caption.edges[0].node.text}
                   min={80}
                   ideal={100}
                   max={120}
                   readMoreText={'selengkapnya'} />
-              </Card.Text>
+              </div>
               <Card.Subtitle>
                 {item.node.taken_at_timestamp} jam yag lalu
               </Card.Subtitle>

@@ -79,99 +79,103 @@ import SettingsTemplate from '../SettingsTemplate';
 // }
 export default class extends Component {
   state = {
-    data: {
-      "email_settings": [
-        {
-          "title": "Email Masukan",
-          "example": "Beri masukan di Instagram.",
-          "options": [
-            [
-              "Berlangganan",
-              1
-            ],
-            [
-              "Berhenti berlangganan",
-              2
-            ]
+    settings: JSON.parse(localStorage.getItem('email_settings')) || [
+      {
+        "title": "Email Masukan",
+        "example": "Beri masukan di Instagram.",
+        "options": [
+          [
+            "Berlangganan",
+            1
           ],
-          "name": "research",
-          "checked": 1
-        },
-        {
-          "title": "Email Pengingat",
-          "example": "Dapatkan notifikasi yang mungkin Anda lewatkan.",
-          "options": [
-            [
-              "Berlangganan",
-              1
-            ],
-            [
-              "Berhenti berlangganan",
-              2
-            ]
+          [
+            "Berhenti berlangganan",
+            2
+          ]
+        ],
+        "name": "research",
+        "checked": 1
+      },
+      {
+        "title": "Email Pengingat",
+        "example": "Dapatkan notifikasi yang mungkin Anda lewatkan.",
+        "options": [
+          [
+            "Berlangganan",
+            1
           ],
-          "name": "reminders",
-          "checked": 2
-        },
-        {
-          "title": "Email Produk",
-          "example": "Dapatkan tips tentang fitur Instagram.",
-          "options": [
-            [
-              "Berlangganan",
-              1
-            ],
-            [
-              "Berhenti berlangganan",
-              2
-            ]
+          [
+            "Berhenti berlangganan",
+            2
+          ]
+        ],
+        "name": "reminders",
+        "checked": 2
+      },
+      {
+        "title": "Email Produk",
+        "example": "Dapatkan tips tentang fitur Instagram.",
+        "options": [
+          [
+            "Berlangganan",
+            1
           ],
-          "name": "tutorial",
-          "checked": 2
-        },
-        {
-          "title": "Email Berita",
-          "example": "Pelajari tentang fitur baru Instagram.",
-          "options": [
-            [
-              "Berlangganan",
-              1
-            ],
-            [
-              "Berhenti berlangganan",
-              2
-            ]
+          [
+            "Berhenti berlangganan",
+            2
+          ]
+        ],
+        "name": "tutorial",
+        "checked": 2
+      },
+      {
+        "title": "Email Berita",
+        "example": "Pelajari tentang fitur baru Instagram.",
+        "options": [
+          [
+            "Berlangganan",
+            1
           ],
-          "name": "announcement",
-          "checked": 2
-        },
-        {
-          "title": "Email Dukungan",
-          "example": "Dapatkan pembaruan laporan dan pelanggaran Pedoman Komunitas.",
-          "options": [
-            [
-              "Berlangganan",
-              1
-            ],
-            [
-              "Berhenti berlangganan",
-              2
-            ]
+          [
+            "Berhenti berlangganan",
+            2
+          ]
+        ],
+        "name": "announcement",
+        "checked": 2
+      },
+      {
+        "title": "Email Dukungan",
+        "example": "Dapatkan pembaruan laporan dan pelanggaran Pedoman Komunitas.",
+        "options": [
+          [
+            "Berlangganan",
+            1
           ],
-          "name": "support_email",
-          "checked": 2
-        }
-      ]
-    }
+          [
+            "Berhenti berlangganan",
+            2
+          ]
+        ],
+        "name": "support_email",
+        "checked": 2
+      }
+    ]
+
   }
-  handleCheck = (e, i) => {
-    const { checked } = e.target
-    const value = checked === true ? { checked: 1 } : { checked: 2 }
-    const data = Object.assign(this.state.data.email_settings[i], value)
-    console.log(data)
+
+  onChange(e, i) {
+    const checked = e.target.checked;
+    const settings = this.state.settings;
+    const value = checked ? { checked: 2 } : { checked: 1 };
+    // settings[i] = { ...settings[i], checked: value };
+    settings[i] = Object.assign(settings[i], value);
+    this.setState({ settings: settings });
+    localStorage.email_settings = JSON.stringify(settings);
   }
 
   render() {
+    const { settings } = this.state;
     return (
       <MainTemplate>
         <Container className="template">
@@ -180,17 +184,16 @@ export default class extends Component {
               <SettingsTemplate  {...this.props} />
               <Col sm={9} className="side-right">
                 <Container>
-                  {
-                    this.state.data.email_settings.map((es, i) =>
-                      <div key={i}>
-                        <Form.Group id="formGridCheckbox">
-                          <Form.Check type="checkbox" id={es.name} label={es.title} defaultChecked={es.checked === 2} onChange={e => this.handleCheck(e, i)} />
-                          <em>{es.example}</em>
+                  <Form>
+                    {settings.map((s, i) => {
+                      return (
+                        <Form.Group key={i} controlId={s.name}>
+                          <Form.Check className="chkbx" type="checkbox" defaultChecked={settings[i].checked === 2} name={s.name} label={s.title} onChange={(e) => this.onChange(e, i)} />
+                          <Form.Text className="chk-cmnt">{s.example}</Form.Text>
                         </Form.Group>
-                        <br />
-                      </div>
-                    )
-                  }
+                      );
+                    })}
+                  </Form>
 
                 </Container>
               </Col>
