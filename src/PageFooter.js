@@ -5,11 +5,11 @@ export default class PageFooter extends Component {
   render() {
     return (
       <Container fluid>
-        <Row className="footer">
+        <Row className="footer" >
           <Container>
-            <Row>
-              <Col sm={12}>
-                <p>
+            <Row >
+              <Col style={{ backgroundColor: "black" }} sm={12}>
+                <p style={{ color: "white" }}>
                   Tentang
                   Blog
                   Pekerjaan

@@ -183,9 +183,9 @@
 .card {
   margin: 20px;
 }
-.card-header {
+/* .card-header {
   background-color: white !important;
-}
+} */
 .card-footer {
   background-color: white !important;
   padding: 0px !important;
