@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import { withRouter, /* useHistory */ } from "react-router";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { Col, Nav } from 'react-bootstrap';
 
 
-export default class SettingsTemplate extends Component {
+class SettingsTemplate extends Component {
   render() {
+    console.log(this.props.background)
     return (
       <Col sm={3} className="side-left">
         <Nav variant="pills" className="flex-column">
@@ -22,3 +25,8 @@ export default class SettingsTemplate extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return { background: state.background };
+};
+export default connect(mapStateToProps, null)(withRouter(SettingsTemplate))

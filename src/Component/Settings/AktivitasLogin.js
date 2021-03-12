@@ -10,7 +10,7 @@ export default class AktivitasLogin extends Component {
         <Container className="template">
           <Tab.Container id="left-tabs-example" defaultActiveKey="1">
             <Row className="settings">
-              <SettingsTemplate  {...this.props} />
+              <SettingsTemplate />
               <Col sm={9} className="side-right">
                 <Container>
                   <h1>Aktivitas Login</h1>
