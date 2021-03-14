@@ -9,7 +9,15 @@ class Message extends Component {
     comments: [],
     show: false,
     showAlert: false,
-    indexAlert: null
+    indexAlert: null,
+    action: "",
+  }
+  componentDidMount() {
+    axios.get(API_URL + "/comments")
+      .then(res => {
+        const comments = res.data;
+        this.setState({ comments });
+      })
   }
   handleOpen = () => {
     this.setState({ show: true })
@@ -31,35 +39,24 @@ class Message extends Component {
           const comments = res.data;
           this.setState({ comments });
         }))
+    // WARNING COOKING HAZARD
+    // this.state.comments.push(data)
+    // this.setState({ action: "axios.post" })
   }
-  crudDelete = (id) => {
+  crudDelete = (i, id) => {
     axios.delete(API_URL + "/comments/" + id)
       .then(axios.get(API_URL + "/comments")
         .then(res => {
           const comments = res.data;
           this.setState({ comments });
         }))
-    this.setState({ showAlert: false })
+    // WARNING COOKING HAZARD
+    // this.state.comments.splice(i, 1)
+    // this.setState({ action: "axios.delete" })
   }
-  crudUpdate = () => {
-    axios.put(API_URL + "/comments/", { "silit": "silit" })
-      .then(axios.get(API_URL + "/comments")
-        .then(res => {
-          const comments = res.data;
-          this.setState({ comments });
-        }))
-    this.setState({ showAlert: false })
-  }
-  componentDidMount() {
-    axios.get(API_URL + "/comments")
-      .then(res => {
-        const comments = res.data;
-        this.setState({ comments });
-      })
-  }
-  alertHandleOpen = (item) => {
+  alertHandleOpen = (i) => {
     this.setState({ showAlert: true })
-    this.setState({ indexAlert: item })
+    this.setState({ indexAlert: i })
   }
   alertHandleClose = () => {
     this.setState({ showAlert: false })
@@ -77,26 +74,32 @@ class Message extends Component {
           <br />
           <Row className="body">
             <Table striped bordered hover>
-              <Alert comments={this.state.comments} index={this.state.indexAlert} show={this.state.showAlert} crudDelete={this.crudDelete} crudUpdate={this.crudUpdate} handleOpen={this.alertHandleOpen} handleClose={this.alertHandleClose} />
+              {this.state.indexAlert === null ? null : <Alert comments={this.state.comments} index={this.state.indexAlert} show={this.state.showAlert} handleOpen={this.alertHandleOpen} handleClose={this.alertHandleClose} />}
               <thead>
                 <tr>
-                  <th>Id</th>
+                  <th>No</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Comments</th>
+                  {/* <th>Id</th> */}
+                  <th>Delete</th>
+                  <th>Update</th>
                 </tr>
               </thead>
-              {
-                this.state.comments.map((item, i) =>
-                  <tbody key={item.id}>
-                    <tr onClick={e => this.alertHandleOpen(item.id)}>
+              <tbody>
+                {
+                  this.state.comments.map((item, i) =>
+                    <tr key={i} >
                       <td>{i + 1}</td>
                       <td>{item.name}</td>
                       <td>{item.email}</td>
                       <td>{item.body}</td>
+                      {/* <td>{item.id}</td> */}
+                      <td><Button onClick={e => this.crudDelete(i, item.id)}>Delete</Button></td>
+                      <td><Button onClick={e => this.alertHandleOpen(i)}>Update</Button></td>
                     </tr>
-                  </tbody>
-                )}
+                  )}
+              </tbody>
             </Table>
           </Row>
         </Container>
@@ -139,9 +142,6 @@ class Dialog extends Component {
 }
 
 class Alert extends Component {
-  state = {
-    update: this.props.comments[this.props.index - 1]
-  }
   render() {
     console.log("alert");
     return (
@@ -150,29 +150,26 @@ class Alert extends Component {
         onHide={this.props.handleClose}
         backdrop="static"
       >
-        {typeof (this.props.index) === "number" &&
-          <Form onSubmit={e => this.props.crudUpdate()}>
-            <Modal.Header closeButton>
-              <Modal.Title>Updating and Deleting Data</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <Form.Label>Id</Form.Label>
-              <FormControl defaultValue={this.props.comments[this.props.index - 1] !== "undefined" && this.props.comments[this.props.index - 1].id} disabled />
-              <Form.Label>Name</Form.Label>
-              <FormControl defaultValue={this.props.comments[this.props.index - 1] !== "undefined" && this.props.comments[this.props.index - 1].name} name="name" />
-              <Form.Label>Email</Form.Label>
-              <FormControl defaultValue={this.props.comments[this.props.index - 1] !== "undefined" && this.props.comments[this.props.index - 1].email} type="email" name="email" />
-              <Form.Label>Comments</Form.Label>
-              <FormControl defaultValue={this.props.comments[this.props.index - 1] !== "undefined" && this.props.comments[this.props.index - 1].body} name="comments" />
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary" type="submit">
-                Update
-          </Button>
-              <Button onClick={e => this.props.crudDelete(this.props.index)} variant="secondary">Delete</Button>
-            </Modal.Footer>
-          </Form>
-        }
+        <Form onSubmit={e => this.props.crudUpdate()}>
+          <Modal.Header closeButton>
+            <Modal.Title>Updating and Deleting Data</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Label>No</Form.Label>
+            <FormControl defaultValue={this.props.index + 1} disabled />
+            <Form.Label>Name</Form.Label>
+            <FormControl defaultValue={this.props.comments[this.props.index].name} name="name" />
+            <Form.Label>Email</Form.Label>
+            <FormControl defaultValue={this.props.comments[this.props.index].email} type="email" name="email" />
+            <Form.Label>Comments</Form.Label>
+            <FormControl defaultValue={this.props.comments[this.props.index].body} name="comments" />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" type="submit">
+              Update
+              </Button>
+          </Modal.Footer>
+        </Form>
       </Modal>
     )
   }
