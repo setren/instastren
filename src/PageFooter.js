@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
+import { connect } from "react-redux";
 
-export default class PageFooter extends Component {
+class PageFooter extends Component {
   render() {
     return (
       <Container fluid>
         <Row className="footer" >
           <Container>
             <Row >
-              <Col style={{ backgroundColor: "black" }} sm={12}>
-                <p style={{ color: "white" }}>
+              <Col style={{ backgroundColor: this.props.background }} sm={12}>
+                <p style={{ color: this.props.color }}>
                   Tentang
                   Blog
                   Pekerjaan
@@ -31,3 +32,9 @@ export default class PageFooter extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return { background: state.background, color: state.color };
+};
+
+export default connect(mapStateToProps)(PageFooter);
