@@ -33,7 +33,7 @@ class PageHeader extends Component {
               <Col sm={4}>
                 <Navbar >
                   <Link to="/">
-                    <p style={this.props.background === "white" ? { marginLeft: "0", marginBottom: "0", fontSize: "40px", cursor: "pointer", color: "black" } : { marginLeft: "0", marginBottom: "0", fontSize: "40px", cursor: "pointer", color: "white" }} >ιηѕтαѕтяєη</p>
+                    <p style={this.props.background === "white" ? { marginLeft: "0", marginBottom: "0", fontSize: "40px", cursor: "pointer", color: "black" } : { marginLeft: "0", marginBottom: "0", fontSize: "40px", cursor: "pointer", color: "white" }} >𝒾𝓃𝓈𝓉𝒶𝓈𝑒𝓉𝓇𝑒𝓃</p>
                   </Link>
                 </Navbar>
               </Col>
